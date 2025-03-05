@@ -8,19 +8,20 @@ const pPrice = document.getElementById("price");
 
 
 const priceKm = 0.21;
+let typeOfDiscount = "No Sconto"
 let discount = 0;
 let discountValue = 0;
 let fullPrice;
 let finalPrice;
 
 
-
 form.addEventListener("submit", function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
+    const inputName = document.getElementById("name").value;
     const inputDistanceToTravel = document.getElementById("km").value;
     const distanceToTravel = parseFloat(inputDistanceToTravel.replace(",", "."));
-    const inputUserAge = document.getElementById("age").value;
-    const userAge = parseInt(inputUserAge);
+    const inputUserAge = document.getElementById("age");
+
 
     let checkedKm = (km) => {
         if (!isNaN(km)) {
@@ -36,41 +37,39 @@ form.addEventListener("submit", function (event) {
     };
 
 
-    let checkedAge = (userAge) => {
-        if (!isNaN(userAge)) {
-            if (userAge < 18) {
+    let checkedAge = (inputUserAge) => {
+        let discount = 0;
+
+        switch (inputUserAge.value) {
+            case "1":
                 discount = 20;
-                return discount;
-            } else if (userAge >= 65) {
+                typeOfDiscount = "Sconto Studenti"
+                break;
+            case "3":
                 discount = 40;
-                return discount;
-            }
-        } else {
-            console.log(`Il valore ${inputUserAge} non è un numero.`);
+                typeOfDiscount = "Silver Travel Pass"
+                break;
+            default:
+                discount = 0;
         }
+
+        return discount;
     };
 
 
 
     const price = checkedKm(distanceToTravel);
-    const discountApplied = checkedAge(userAge);
+    const discountPercentage = checkedAge(inputUserAge);
+    const discountValue = (price * discountPercentage) / 100;
+    const finalPrice = (price - discountValue).toFixed(2);
 
-    if ((price && price > 0) && 
-       (discountApplied  && discountApplied >= 0)) {
+    pUserName.textContent = inputName;
+    pUserKm.textContent = `${inputDistanceToTravel} Km`;
+    pUserAge.textContent = `${typeOfDiscount}`;
+    pPrice.textContent = `${finalPrice}€`;
 
-        if (discount !== 0) {
-            discountValue = (price * discountApplied) / 100;
-        } 
-        finalPrice = (price - discountValue).toFixed(2);
 
-        pUserName.textContent = "Andrea Catapano";
-        pUserKm.textContent = `${inputDistanceToTravel} Km`;
-        pUserAge.textContent = `${userAge} anni`;
-        pPrice.textContent = `${finalPrice}€`;
+    console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
 
-        
-        console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
-    } else {
-        console.log("Impossibile calcolare il prezzo del biglietto.");
-    }
+    console.log(discount)
 })

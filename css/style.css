@@ -1,9 +1,20 @@
 body{
     height: 100vh;
-    background-color: #3F4F44;
+    background-color: #053B50;
 }
 
 
 .ac-color-primary {
-    background-color: #2C3930;
+    background-color: #EEEEEE;
+}
+
+
+h1, p, a, span{
+    font-family: "Rubik", sans-serif;
+}
+
+span{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #176B87;
 }
