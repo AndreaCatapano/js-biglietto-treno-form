@@ -1,13 +1,11 @@
-const form = document.getElementById("ticketForm");
-const pUserName = document.getElementById("user-name");
-const pUserKm = document.getElementById("user-km");
-const pUserAge = document.getElementById("user-age");
 const pPrice = document.getElementById("price");
 
+const ticket = document.getElementById("ticket");
 
+const form = document.getElementById("form-ticket")
 
 const priceKm = 0.21;
-let typeOfDiscount = "No Sconto"
+let typeOfTicket = "Biglietto Standard"
 let discount = 0;
 let discountValue = 0;
 let finalPrice;
@@ -45,11 +43,11 @@ form.addEventListener("submit", function (event) {
         switch (inputUserAge.value) {
             case "1":
                 discount = 20;
-                typeOfDiscount = "Sconto Studenti"
+                typeOfTicket = "Biglietto Studenti"
                 break;
             case "3":
                 discount = 40;
-                typeOfDiscount = "Silver Travel Pass"
+                typeOfTicket = "Biglietto Silver Travel Pass"
                 break;
             default:
                 discount = 0;
@@ -64,13 +62,30 @@ form.addEventListener("submit", function (event) {
     const discountValue = (price * discountPercentage) / 100;
     const finalPrice = (price - discountValue).toFixed(2);
 
-    pUserName.textContent = inputName;
-    pUserKm.textContent = `${price} Km`;
-    pUserAge.textContent = `${typeOfDiscount}`;
-    pPrice.textContent = `${finalPrice}€`;
+
+    ticket.classList.replace("d-none", "d-block")
+
+
+    if (!isNaN(price) && !isNaN(discountPercentage)) {
+
+        let pUserName = document.getElementById("user-name");
+        pUserName.textContent = inputName;
+        let pUserKm = document.getElementById("user-km");
+        pUserKm.textContent = `${city[inputDepartureCity]}-${city[inputArrivalCity]}`;
+        let pUserAge = document.getElementById("user-age");
+        pUserAge.textContent = `${typeOfTicket}`;
+        let pPrice = document.getElementById("price");
+        pPrice.textContent = `${finalPrice}€`;
+
+    } else {
+        const ticketError = document.getElementById("error");
+        ticketError.classList.replace("d-none", "d-block")
+    }
 
 
     console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
+})
 
-    console.log(discount)
+form.addEventListener("reset", function (){
+    window.location.reload()
 })

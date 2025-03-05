@@ -1,5 +1,5 @@
-body{
-    height: 100vh;
+body {
+    height: 100%;
     background-color: #053B50;
 }
 
@@ -9,16 +9,34 @@ body{
 }
 
 
-h1, p, a, span{
+
+h1,
+p,
+a,
+span {
     font-family: "Rubik", sans-serif;
 }
 
-span{
+span {
     font-size: 1.2rem;
     font-weight: 600;
     color: #176B87;
 }
 
-#form-ticket {
+h1{
+    font-size: 3rem;
+    color: #EEEEEE;
+}
+
+p, h2 {
+    font-size: 1.2rem;
+    color: #176B87;
+}
+
+h2{
+    font-size: 3rem;
+}
+
+#form-ticket, #ticket {
     border-radius: 20px;
 }
