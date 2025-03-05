@@ -1,4 +1,10 @@
 const form = document.getElementById("ticketForm");
+const pUserName = document.getElementById("user-name");
+const pUserKm = document.getElementById("user-km");
+const pUserAge = document.getElementById("user-age");
+const pPrice = document.getElementById("price");
+
+
 
 
 const priceKm = 0.21;
@@ -56,6 +62,13 @@ form.addEventListener("submit", function (event) {
             discountValue = (price * discountApplied) / 100;
         } 
         finalPrice = (price - discountValue).toFixed(2);
+
+        pUserName.textContent = "Andrea Catapano";
+        pUserKm.textContent = `${inputDistanceToTravel} Km`;
+        pUserAge.textContent = `${userAge} anni`;
+        pPrice.textContent = `${finalPrice}€`;
+
+        
         console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
     } else {
         console.log("Impossibile calcolare il prezzo del biglietto.");
