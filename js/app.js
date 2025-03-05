@@ -86,10 +86,6 @@ form.addEventListener("submit", function (event) {
     console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
 })
 
-form.addEventListener("reset", function (){
-    window.location.reload()
-})
-
 
 const lookForInitials = (arr, departureCity, arrivalCity) => {
     const initials = [];
