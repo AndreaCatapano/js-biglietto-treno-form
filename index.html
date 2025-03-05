@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <div class="ac-color-primary p-5">
+        <form id="ticketForm" action="./js/app.js" class="container">
+            <div class="row">
+                <div class="mb-3 col-lg-4 row align-items-center">
+                    <div class="col-4 flex-fill">
+                        <label for="name" class="col-form-label text-nowrap">Nome:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="name" placeholder="Mario Rossi">
+                    </div>
+                </div>
+                <div class="mb-3 col-lg-4 row align-items-center">
+                    <div class="col-4 lex-fill">
+                        <label for="km" class="col-form-label text-nowrap">Km da percorrere:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="km" placeholder="0...">
+                    </div>
+                </div>
 
-    <form id="ticketForm" action="./js/app.js">
-        <label for="km">Km da percorrere:</label>
-        <input type="text" id="km" name="fname"><br><br>
-        <label for="age">Età del passegero:</label>
-        <input type="text" id="age" name="lname"><br><br>
-        <button type="submit">Calcola</button>
-    </form>
-
+                <div class="mb-3 col-lg-4 row align-items-center">
+                    <div class="col-4">
+                        <label for="age" class="form-label text-nowrap  ">Età del passegero:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="age" placeholder="0...">
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Calcola</button>
+        </form>
+    </div>
 
     <div>
         <p id="user-name"></p>
@@ -24,8 +51,11 @@
         <p id="user-age"></p>
         <p id="price"></p>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
+    <div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="js/app.js"></script>
 </body>
+
 </html>
