@@ -21,7 +21,7 @@
 
     <h1 class="text-center mb-5 mt-5">Calcola il prezzo del tuo biglietto</h1>
 
-    <div id="form-ticket" class="ac-color-primary p-5 container">
+    <div id="form-ticket" class="ac-color-primary p-5 container shadow-lg">
         <form id="ticketForm" action="./js/app.js" class="row justify-content-between">
             <div class="row">
                 <!-- Nome -->
@@ -75,7 +75,7 @@
 
 
 
-    <div id="ticket" class="d-none container ac-color-primary">
+    <div id="ticket" class="d-none container ac-color-primary shadow-lg">
         <h2 class="text-center mb-5 mt-5">Dettagli del tuo biglietto</h2>
         <div class="row p-5">
             <div class="col-3">
@@ -95,6 +95,11 @@
             <div class="col-3">
                 <p class="fw-semibold">Costo biglietto:</p>
                 <p id="price">0</p>
+            </div>
+
+            <div class="col-3">
+                <p class="fw-semibold">Codice biglietto:</p>
+                <p id="serialcode">0</p>
             </div>
         </div>
 

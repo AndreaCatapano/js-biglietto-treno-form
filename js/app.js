@@ -55,8 +55,6 @@ form.addEventListener("submit", function (event) {
         return discount;
     };
 
-
-
     const price = checkedKm(inputDepartureCity, inputArrivalCity);
     const discountPercentage = checkedAge(inputUserAge);
     const discountValue = (price * discountPercentage) / 100;
@@ -76,7 +74,9 @@ form.addEventListener("submit", function (event) {
         pUserAge.textContent = `${typeOfTicket}`;
         let pPrice = document.getElementById("price");
         pPrice.textContent = `${finalPrice}€`;
-
+        serialCodeSring = serialCodeGenerator(lookForInitials(city, inputDepartureCity, inputArrivalCity))
+        let serialCode = document.getElementById("serialcode");
+        serialCode.textContent = `${serialCodeSring}`;
     } else {
         const ticketError = document.getElementById("error");
         ticketError.classList.replace("d-none", "d-block")
@@ -89,3 +89,38 @@ form.addEventListener("submit", function (event) {
 form.addEventListener("reset", function (){
     window.location.reload()
 })
+
+
+const lookForInitials = (arr, departureCity, arrivalCity) => {
+    const initials = [];
+
+    if (departureCity >= 0 && departureCity < arr.length) {
+        initials.push(arr[departureCity][0], arr[departureCity][1]); // Prima e seconda lettera della città di partenza
+    }
+    if (arrivalCity >= 0 && arrivalCity < arr.length) {
+        initials.push(arr[arrivalCity][0], arr[arrivalCity][1]); // Prima e seconda lettera della città di arrivo
+    }
+
+    console.log(initials);
+    return initials;
+}
+
+function randomNumberTo1At9 () {
+    return parseInt(Math.random() * (9 - 1) + 1);
+}
+
+function serialCodeGenerator (arr){
+    const serialCode = ["0", "0", "0", "0", "0", "0","0","0","0","0"]
+    for (let i = 0; i < arr.length; i++){
+        serialCode[i] = arr[i].toUpperCase();
+    }
+
+    for (let i = 4; i < serialCode.length; i++){
+        const randomNumber = randomNumberTo1At9();
+        serialCode[i] = randomNumber;
+    }
+
+    return serialCodeString = serialCode.join("");
+}
+
+
