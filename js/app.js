@@ -3,7 +3,7 @@ const form = document.getElementById("form-ticket")
 const ticketError = document.getElementById("error");
 
 const priceKm = 0.21;
-let typeOfTicket = "Biglietto Standard"
+let typeOfTicket;
 let discount = 0;
 let discountValue = 0;
 let finalPrice;
@@ -45,6 +45,7 @@ form.addEventListener("submit", function (event) {
                 break;
             default:
                 discount = 0;
+                typeOfTicket = "Biglietto Standard"
         }
         return discount;
     };
@@ -74,16 +75,13 @@ form.addEventListener("submit", function (event) {
         let isValidInputDepartureCity = inputDepartureCity >= 0 && inputDepartureCity <= 3
         let isValidInputArrivalCity = inputArrivalCity >= 0 && inputArrivalCity <= 3
 
-        if (!isValidInputDepartureCity || !isValidInputDepartureCity){
+        if (!isValidInputDepartureCity || !isValidInputArrivalCity){
             ticketError.textContent = "Impossibile generare il biglietto, non hai inserito tutti i campi!"
         } else {
             ticketError.textContent = "Impossibile generare il biglietto, hai selezionato lo stessa città!"
         }
         ticketError.classList.replace("d-none", "d-block")
     }
-
-
-    console.log(`Il prezzo finito per questo biglietto è di ${finalPrice}€`);
 })
 
 
