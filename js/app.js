@@ -6,33 +6,35 @@ const pPrice = document.getElementById("price");
 
 
 
-
 const priceKm = 0.21;
 let typeOfDiscount = "No Sconto"
 let discount = 0;
 let discountValue = 0;
-let fullPrice;
 let finalPrice;
+
+
+const city = ["Roma", "Napoli", "Milano", "Firenze"];
+const dist = [[0, 220.30, 578.7, 277.1], [220.30, 0, 773.5, 471.9], [578.7, 773.5, 0, 318.6], [277.1, 471.9, 318.6, 0]];
 
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     const inputName = document.getElementById("name").value;
-    const inputDistanceToTravel = document.getElementById("km").value;
-    const distanceToTravel = parseFloat(inputDistanceToTravel.replace(",", "."));
+
+
+    const inputDepartureCity = document.getElementById("departure-city").selectedIndex - 1;
+    const inputArrivalCity = document.getElementById("arrival-city").selectedIndex - 1;
+
+
     const inputUserAge = document.getElementById("age");
 
 
-    let checkedKm = (km) => {
-        if (!isNaN(km)) {
-            fullPrice = priceKm * km;
-            return fullPrice;
-        }
-        else if (km === 0) {
-            alert(`Il valore ${km} è pari a 0.`);
-        }
-        else {
-            console.log(`Il valore ${km} non è un numero.`);
+    let checkedKm = (departureCity, arrivalCity) => {
+        if (departureCity !== arrivalCity) {
+            const distance = dist[departureCity][arrivalCity];
+            return priceKm * distance;
+        } else {
+            console.log("Hai selezionato lo stessa città!");
         }
     };
 
@@ -52,19 +54,18 @@ form.addEventListener("submit", function (event) {
             default:
                 discount = 0;
         }
-
         return discount;
     };
 
 
 
-    const price = checkedKm(distanceToTravel);
+    const price = checkedKm(inputDepartureCity, inputArrivalCity);
     const discountPercentage = checkedAge(inputUserAge);
     const discountValue = (price * discountPercentage) / 100;
     const finalPrice = (price - discountValue).toFixed(2);
 
     pUserName.textContent = inputName;
-    pUserKm.textContent = `${inputDistanceToTravel} Km`;
+    pUserKm.textContent = `${price} Km`;
     pUserAge.textContent = `${typeOfDiscount}`;
     pPrice.textContent = `${finalPrice}€`;
 

@@ -18,3 +18,7 @@ span{
     font-weight: 600;
     color: #176B87;
 }
+
+#form-ticket {
+    border-radius: 20px;
+}
