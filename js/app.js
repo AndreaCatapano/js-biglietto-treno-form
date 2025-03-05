@@ -1,8 +1,6 @@
-const pPrice = document.getElementById("price");
-
 const ticket = document.getElementById("ticket");
-
 const form = document.getElementById("form-ticket")
+const ticketError = document.getElementById("error");
 
 const priceKm = 0.21;
 let typeOfTicket = "Biglietto Standard"
@@ -17,24 +15,20 @@ const dist = [[0, 220.30, 578.7, 277.1], [220.30, 0, 773.5, 471.9], [578.7, 773.
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
+
+
     const inputName = document.getElementById("name").value;
-
-
+    const inputUserAge = document.getElementById("age");
     const inputDepartureCity = document.getElementById("departure-city").selectedIndex - 1;
     const inputArrivalCity = document.getElementById("arrival-city").selectedIndex - 1;
-
-
-    const inputUserAge = document.getElementById("age");
 
 
     let checkedKm = (departureCity, arrivalCity) => {
         if (departureCity !== arrivalCity) {
             const distance = dist[departureCity][arrivalCity];
             return priceKm * distance;
-        } else {
-            console.log("Hai selezionato lo stessa città!");
         }
-    };
+        };
 
 
     let checkedAge = (inputUserAge) => {
@@ -60,12 +54,10 @@ form.addEventListener("submit", function (event) {
     const discountValue = (price * discountPercentage) / 100;
     const finalPrice = (price - discountValue).toFixed(2);
 
+    if (!isNaN(finalPrice)) {
 
-    ticket.classList.replace("d-none", "d-block")
-
-
-    if (!isNaN(price) && !isNaN(discountPercentage)) {
-
+        ticketError.classList.replace("d-block", "d-none")
+        ticket.classList.replace("d-none", "d-block")
         let pUserName = document.getElementById("user-name");
         pUserName.textContent = inputName;
         let pUserKm = document.getElementById("user-km");
@@ -77,8 +69,16 @@ form.addEventListener("submit", function (event) {
         serialCodeSring = serialCodeGenerator(lookForInitials(city, inputDepartureCity, inputArrivalCity))
         let serialCode = document.getElementById("serialcode");
         serialCode.textContent = `${serialCodeSring}`;
+
     } else {
-        const ticketError = document.getElementById("error");
+        let isValidInputDepartureCity = inputDepartureCity >= 0 && inputDepartureCity <= 3
+        let isValidInputArrivalCity = inputArrivalCity >= 0 && inputArrivalCity <= 3
+
+        if (!isValidInputDepartureCity || !isValidInputDepartureCity){
+            ticketError.textContent = "Impossibile generare il biglietto, non hai inserito tutti i campi!"
+        } else {
+            ticketError.textContent = "Impossibile generare il biglietto, hai selezionato lo stessa città!"
+        }
         ticketError.classList.replace("d-none", "d-block")
     }
 
@@ -110,7 +110,7 @@ function randomNumberTo1At9 () {
 }
 
 function serialCodeGenerator (arr){
-    const serialCode = ["0", "0", "0", "0", "0", "0","0","0","0","0"]
+    const serialCode = ["0", "0", "0", "0", "0", "0","0","0","0","0","0","0"]
     for (let i = 0; i < arr.length; i++){
         serialCode[i] = arr[i].toUpperCase();
     }

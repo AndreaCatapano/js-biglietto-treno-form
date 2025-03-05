@@ -34,9 +34,8 @@
                 <div class="mb-3">
                     <label for="age" class="col-form-label"><span>Fascia d'età:</span></label>
                     <select class="form-select" id="age" aria-label="Default select example">
-                        <option selected>Seleziona</option>
                         <option value="1">Under 18</option>
-                        <option value="2">Maggiorenne</option>
+                        <option selected value="2">Maggiorenne</option>
                         <option value="3">Over 65</option>
                     </select>
                 </div>
@@ -55,7 +54,7 @@
                     </div>
 
                     <div class="mb-3 col-5">
-                        <label for="age" class="col-form-label"><span>Città di Partenza</span></label>
+                        <label for="age" class="col-form-label"><span>Città di Arrivo</span></label>
                         <select class="form-select" id="arrival-city" aria-label="Default select example">
                             <option selected>Seleziona</option>
                             <option value="1">Roma</option>
@@ -75,38 +74,42 @@
 
 
 
-    <div id="ticket" class="d-none container ac-color-primary shadow-lg">
+    <div id="ticket" class="d-none container ac-color-primary shadow-lg mb-5">
         <h2 class="text-center mb-5 mt-5">Dettagli del tuo biglietto</h2>
         <div class="row p-5">
-            <div class="col-3">
+            <div class="col-lg-3">
                 <p class="fw-semibold">Nome sul biglietto:</p>
                 <p id="user-name" class="text-nowrap"></p>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3">
                 <p class="fw-semibold">Tratta da percorrere:</p>
                 <p id="user-km" class="text-nowrap text-uppercase"></p>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <p class="fw-semibold">Tipo Biglietto:</p>
                 <p id="user-age" class="text-nowrap text-uppercase">0</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <p class="fw-semibold">Costo biglietto:</p>
                 <p id="price">0</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <p class="fw-semibold">Codice biglietto:</p>
                 <p id="serialcode">0</p>
             </div>
         </div>
 
-        <p id="error" class="d-none text-center text-danger pb-2">Impossibile generare il biglietto, inserire tutti i
-            dati richiesti! Ricarica la pagina!</p>
+        <div class="d-flex justify-content-center align-items-center gap-3 mt-3 pb-3">
+            <button type="save" class="btn btn-primary col-3">Salva</button>
+            <button type="print" class="btn btn-primary col-3">Stampa</button>
+        </div>
+
     </div>
 
+    <p id="error" class="d-none text-center text-danger pb-2">0</p>
 
     <div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

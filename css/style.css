@@ -40,3 +40,10 @@ h2{
 #form-ticket, #ticket {
     border-radius: 20px;
 }
+
+
+button{
+    background-color: #64CCC5 !important;
+    border-color: #64CCC5 !important;
+    color: #EEEEEE !important;
+}
